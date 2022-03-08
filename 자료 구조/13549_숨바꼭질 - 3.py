@@ -32,4 +32,18 @@ def do():
 
   print(dist[M])
 
-do()
+def fast():
+  def dfs(n, k):
+    if (k <= n):
+      return n - k
+    elif (k == 1):
+      return 1
+    elif (k % 2):
+      return 1 + min(dfs(n, k - 1), dfs(n, k + 1))
+    else:
+      return min(k - n, dfs(n, k//2))
+
+  N, K = map(int, input().split())
+  print(dfs(N, K))
+
+fast()
